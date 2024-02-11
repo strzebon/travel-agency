@@ -1,0 +1,40 @@
+label{
+    font-weight: bold;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+form{
+    background-color: lightyellow;
+    /* border: 1px solid orange; */
+    box-shadow: 0 0 10px grey;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 590px;
+}
+
+input{
+    width: 166px;
+    padding: 1px 5px;
+}
+
+input[type="submit"]{
+    /* width: 180px; */
+    width: fit-content;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.error{
+    color: red;
+    margin: 0;
+}

@@ -1,0 +1,3 @@
+<div id="container">
+    <app-card *ngFor="let trip of tripService.getTrips(), index as i" [trip] = "trip" [color] = "tripService.getColor(i)" [index] = "i"></app-card>
+</div>

@@ -1,0 +1,64 @@
+<nav>
+    <div class="box">
+        <a routerLink="/home">
+            <i class="material-icons navButton" style="font-size: 30px;">home</i>
+        </a>
+    
+        <a routerLink="/trip-list">
+            <i class="material-icons navButton" style="font-size: 30px;">grid_view</i>
+        </a>
+    
+        <a *ngIf="tripService.isLoggedIn()" routerLink="/history">
+            <i class="material-icons navButton" style="font-size: 30px;">history</i>
+        </a>
+    </div>
+
+    <div class="box">
+        <a *ngIf="tripService.isAdmin()" routerLink="/admin-panel">
+            <i class="material-icons navButton" style="font-size: 30px;">admin_panel_settings</i>
+        </a>
+    
+        <a *ngIf="tripService.isManager()" routerLink="/add">
+            <div id="add" class="navButton">+</div>
+        </a>
+    </div>
+
+    <div class="box">
+        <a *ngIf="!tripService.isLoggedIn()" routerLink="/login">
+            <i class="material-icons navButton" style="font-size: 30px;">login</i>
+        </a>
+    
+        <div class="box" *ngIf="tripService.isLoggedIn()" (click) = "tripService.signOut()">
+            <div>{{tripService.getLogin()}}</div>
+            <i class="material-icons navButton" style="font-size: 30px;">logout</i>
+        </div>
+    
+        <div *ngIf="tripService.isLoggedIn()" id="info">
+            <i id="infoIcon" class="material-icons navButton" style="font-size: 30px;">notifications</i>
+            <div id="notifications">
+                <div *ngFor="let purchase of tripService.getPurchases()">
+                    <div *ngIf="tripService.showNotification(purchase)">
+                        <p>{{purchase.name | uppercase}}</p>
+                        <div>{{purchase.start}}</div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div *ngIf="tripService.isLoggedIn()" id="basket" (click)="summary()">
+            <i class="material-icons navButton" style="font-size: 30px;">shopping_cart</i>
+            <div id="sumOfReserved" [ngStyle]="{'backgroundColor': tripService.getSumOfReserved() < 10 ? 'red' : 'green'}">{{tripService.getSumOfReserved()}}</div>
+        </div>
+    </div>
+</nav>
+
+<div id="summary" [ngStyle]="{'right': showBasket ? '0' : '-350px'}">
+    <app-basket></app-basket>
+</div>
+
+<div id="grey" [ngStyle]="{'opacity': showBasket ? '0.6' : '0', 'pointerEvents': showBasket ? 'all' : 'none'}" (click)="hideSummary()"></div>
+
+<div id="container">
+    <router-outlet></router-outlet>
+</div>

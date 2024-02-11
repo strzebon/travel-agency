@@ -1,0 +1,23 @@
+<div id="container" *ngFor="let trip of tripService.getTrips(), index as i">
+    <div *ngIf="tripService.getReservations(i) > 0">
+        <div class="row">
+            <div class="left">
+                <div class="quantity">{{tripService.getReservations(i)}}×</div>
+                <div>{{trip.name | uppercase}}</div>
+            </div>
+            <div>${{trip.price * tripService.getReservations(i)}}</div>
+        </div>
+        <div class="buy" (click)="tripService.purchaseTrip(i)">KUP</div>
+        <div class="line"></div>
+    </div>
+</div>
+
+<div id="buyAll" *ngIf="tripService.getTotalPrice() > 0">
+    <div id="summary">
+        <div class="bold">RAZEM</div>
+        <div class="bold">${{tripService.getTotalPrice()}}</div>
+    </div>
+    <div id="all" class="buy" (click)="tripService.purchaseAllTrips()">KUP WSZYSTKO</div>
+</div>
+
+<p *ngIf="tripService.getTotalPrice() == 0">Twój koszyk jest pusty</p>

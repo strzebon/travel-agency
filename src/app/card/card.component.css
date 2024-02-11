@@ -1,0 +1,100 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 320px;
+    box-shadow: 0 0 10px grey;
+    padding: 0 10px;
+    border-radius: 20px;
+    height: 600px;
+    margin: 10px;
+    border: 5px solid lightyellow;
+    background-color: lightyellow;
+}
+
+img{
+    width: 320px;
+    height: 215.11px;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3{
+    text-align: center;
+}
+
+#quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+i{
+    cursor: pointer;
+    user-select: none;
+    color: grey;
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+}
+
+#edit{
+    color: black;
+}
+
+#bin{
+    color: black;
+    font-size: 30px;
+}
+
+#added{
+    width: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+#stars{
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+
+#bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#price{
+    margin: 0;
+    font-size: 20px;
+}
+
+p{
+    margin: 5px 0;
+}
+
+#line{
+    width: 100%;
+    height: 1px;
+    background-color: lightgrey;
+    margin: 10px 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.star{
+    color: gold;
+    cursor: default;
+}
+
+#com{
+    color: grey;
+}

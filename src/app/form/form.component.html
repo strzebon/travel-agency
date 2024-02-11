@@ -1,0 +1,51 @@
+<div id="container">
+       <form (ngSubmit)="onSubmit()" action="#">
+              <div class="form-group">
+                     <label for="name">Nazwa</label>
+                     <br>
+                     <input type="text" class="form-control" required maxlength="50"
+                            [(ngModel)]="trip.name" name="name">
+              </div>
+              <div class="form-group">
+                     <label for="country">Kraj</label>
+                     <br>
+                     <input type="text"  class="form-control" [(ngModel)]="trip.country" name="country" required maxlength="20">
+              </div>
+              <div class="form-group">
+                     <label for="start">Data rozpoczęcia</label>
+                     <br>
+                     <input type="date" class="form-control" id="start" [(ngModel)]="trip.start" name="start" (ngModelChange)="changedStart()">
+              </div>
+              <div class="form-group">
+                     <label for="end">Data zakończenia</label>
+                     <br>
+                     <input type="date" class="form-control" #end [(ngModel)]="trip.end" name="end">
+              </div>
+              <div class="form-group">
+                     <label for="price">Cena [$]</label>
+                     <br>
+                     <input type="text" class="form-control" #price [(ngModel)]="trip.price" name="price" pattern="0|[1-9][0-9]*" required>
+                     <p class="error" *ngIf="priceError">Błędny format</p>
+                              
+              </div>
+              <div class="form-group">
+                     <label for="places">Liczba miejsc</label>
+                     <br>
+                     <input type="text"  class="form-control" #places [(ngModel)]="trip.places" name="places" pattern="0|[1-9][0-9]*" required>
+                     <p class="error" *ngIf="placesError">Błędny format</p>       
+              </div>
+              <div class="form-group">
+                     <label for="desc">Krótki opis</label>
+                     <br>
+                     <input type="text" class="form-control" [(ngModel)]="trip.desc" name="desc" maxlength="320" required>
+              </div>
+              <div class="form-group">
+                     <label for="img">Link do zdjęcia</label>
+                     <br>
+                     <input type="text"  class="form-control" id="img" [(ngModel)]="trip.img" name="img">
+              </div>
+              <input type="submit">
+       </form>
+
+       <app-card [trip]="trip" [color]="'lightyellow'" [index]="-1"></app-card>
+</div>

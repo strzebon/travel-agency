@@ -1,0 +1,19 @@
+label{
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+li{
+    align-items: center;
+    margin: 5px 0;
+}
+
+i{
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+}

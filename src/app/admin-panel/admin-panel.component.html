@@ -1,0 +1,26 @@
+<p><strong>Aktualny tryb persystencji: </strong>{{tripService.getPersistence()}}</p>
+<label for="brand">Zmień tryb persystencji:</label>
+<select id="brand" [(ngModel)]="selectedOption" (ngModelChange)="tripService.changePersistence(selectedOption)">
+    <option>local</option>
+    <option>session</option>
+    <option>none</option>
+</select>
+<p><strong>Users:</strong></p>
+<ol>
+    <div *ngFor = "let user of tripService.getUsers()">
+        <li><strong>{{user.login}}</strong></li>
+        <ul>
+            <li><strong>uid: </strong>{{user.uid}}</li>
+            <div class="box">
+                <li><strong>manager: </strong>{{user.roles.manager}}</li>
+                <i class="material-icons" style="font-size: 22px;" (click)="tripService.changeRole(user.uid ,'manager', !user.roles.manager)">change_circle</i>
+            </div>
+            
+            <div class="box">
+                <li><strong>admin: </strong>{{user.roles.admin}}</li>
+                <i class="material-icons" style="font-size: 22px;" (click)="tripService.changeRole(user.uid ,'admin', !user.roles.admin)">change_circle</i>
+            </div>
+        </ul>
+        <br>
+    </div>
+</ol>

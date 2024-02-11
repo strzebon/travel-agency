@@ -1,0 +1,6 @@
+<div id="container">
+    <input type="text" placeholder="Login" [(ngModel)]="login">
+    <input type="password" placeholder="Hasło" [(ngModel)]="password">
+    <div class="button" id="login" (click)="tripService.signIn(login, password)">Zaloguj się</div>
+    <div class="button" id="signin" (click)="tripService.signUp(login, password)">Załóż konto</div>
+</div>

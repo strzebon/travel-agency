@@ -1,0 +1,118 @@
+#container{
+    margin: 80px 10px;
+}
+
+.navButton{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: dodgerblue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton:hover{
+    background-color: rgb(101, 178, 255);
+}
+
+#sumOfReserved{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 28px;
+    top: 2px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: dodgerblue;
+    width: 100%;
+    height: 50px;
+    color: white;
+    position: fixed;
+    top: 0;
+}
+
+#add{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
+[hidden]{
+    display: none !important;
+}
+
+#basket{
+    position: relative;
+}
+
+#summary{
+    width: 350px;
+    height: 100%;
+    position: fixed;
+    top: 50px;
+    transition: right 1s;
+    z-index: 1;
+    background-color: white;
+    overflow: scroll;
+}
+
+#grey{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128);
+    top: 50px;
+    transition: opacity 1s;
+}
+
+a{
+    text-decoration: none;
+}
+
+#info{
+    position: relative;
+}
+
+#notifications{
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 300px;
+    box-shadow: 0 0 10px lightgrey;
+    background-color: white;
+    padding: 0 10px;
+    color: black;
+}
+
+#info:hover>#notifications{
+    display: block;
+}
+
+#infoIcon{
+    cursor: default;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: lightgrey;
+    margin: 20px 0;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+}

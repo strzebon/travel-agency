@@ -1,0 +1,28 @@
+<label for="brand">Status:</label>
+<select id="brand" [(ngModel)]="selectedStatus">
+    <option value="0">dowolny</option>
+    <option value="1">oczekiwanie na rozpoczęcie</option>
+    <option value="2">w trakcie</option>
+    <option value="3">zakończona</option>
+</select>
+<div *ngFor="let purchase of tripService.getPurchases(), index as i">
+    <div *ngIf="show(selectedStatus, purchase.start, purchase.end)">
+        <div class="line"></div>
+        <h3>{{purchase.name|uppercase}}</h3>
+        <div><strong>data zakupu:</strong> {{purchase.date | date: 'dd.MM.yyyy hh:mm a'}}</div>
+        <div><strong>cena:</strong> ${{purchase.price}}</div>
+        <div><strong>data startu:</strong> {{purchase.start | date: 'dd.MM.yyyy'}}</div>
+        <div><strong>data zakończenia:</strong> {{purchase.end | date: 'dd.MM.yyyy'}}</div>
+        <div><strong>lokalizacja:</strong> {{purchase.country | uppercase}}</div>
+        <div><strong>liczba biletów:</strong> {{purchase.places}}</div>
+        <div class="before" *ngIf="before(purchase.start)">oczekiwanie na rozpoczęcie</div>
+        <div class="in" *ngIf="inProcess(purchase.start, purchase.end)">w trakcie</div>
+        <div *ngIf="!purchase.rated && show(3, purchase.start, purchase.end)" class="box">
+            <div id="stars">
+                <i *ngFor="let number of numbers" class="material-icons" [ngStyle]="{'color': number < stars ? 'gold': 'grey'}" (click) = giveStars(number)>star</i>
+            </div>
+            <div id="button" (click)="tripService.giveStars(purchase.name, stars)">Oceń</div>
+        </div>
+        <div class="after" *ngIf="after(purchase.end)">zakończona</div>
+    </div>
+</div>

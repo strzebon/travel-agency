@@ -1,0 +1,38 @@
+<div id="container" [ngStyle]="{borderColor: color}">
+    <div>
+        <div *ngIf="tripService.isManager()" class="box" >
+            <a routerLink="/edit" (click)="tripService.setTripToEdit(trip)">
+                <i id="edit" class="material-icons">edit</i>
+            </a>
+            <i id="bin" class="material-icons" (click) = "tripService.removeCard(index)">close</i>
+        </div>
+        <img src="{{trip.img}}" alt="" [ngStyle]="!tripService.isManager() && {'margin-top': '10px'} || null">
+        <h3>{{trip.name | uppercase}}</h3>
+        <p>{{trip.desc}}</p>
+    </div>
+    
+    <div>
+        <div id="line"></div>
+        <p>{{trip.country | uppercase}}, {{trip.start}} - {{trip.end}}</p>
+        <p [ngStyle]="{'color': getColor(trip.places)}">Liczba wolnych miejsc: {{trip.places}}</p>
+        <div id="bottom">
+            <div *ngIf="trip.numberOfRates == 0" id="com">brak ocen</div>
+            <div *ngIf="trip.numberOfRates > 0" id="stars">
+                <i *ngFor="let number of numbers()" class="material-icons star">star</i>
+                <div>({{trip.numberOfRates}})</div>
+            </div>
+            <p id="price">${{trip.price}}</p>
+        </div>
+        <div *ngIf="tripService.isLoggedIn()" id="quantity">
+            <i *ngIf="trip.places > 0; else emptyPlace1" class="material-icons" (click)="tripService.changeReservations(1, index)">add_circle</i>
+            <ng-template #emptyPlace1>
+                <i class="material-icons" [ngStyle]="{opacity: 0, cursor: 'default'}">add_circle</i>
+            </ng-template>
+            <p id="added">{{tripService.getReservations(index)}}</p>
+            <i *ngIf="tripService.getReservations(index) > 0; else emptyPlace2" class="material-icons" (click)="tripService.changeReservations(-1, index)">remove_circle</i>
+            <ng-template #emptyPlace2>
+                <i class="material-icons" [ngStyle]="{opacity: 0, cursor: 'default'}">add_circle</i>
+            </ng-template>
+        </div>
+    </div>
+</div>
